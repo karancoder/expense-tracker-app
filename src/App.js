@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import ExpensesList from "./components/ExpensesList";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="h-screen bg-slate-50">
+            <div className="flex h-full flex-col mx-auto sm:w-3/5">
+                <div className="text-center p-5 font-bold text-xl bg-sky-300 drop-shadow-md mb-2">
+                    Expense Tracker
+                </div>
+                <ExpensesList />
+            </div>
+        </div>
+    );
 }
 
 export default App;
