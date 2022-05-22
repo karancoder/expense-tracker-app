@@ -12,6 +12,9 @@ const ExpenseItem = ({ expenseItem }) => {
     const getItemRightBorder = (isExpense) => {
         return isExpense ? "border-red-500" : "border-emerald-500";
     };
+    const getExpenseTextColor = (isExpense) => {
+        return isExpense ? "text-red-500" : "text-emerald-500";
+    };
 
     return (
         <div
@@ -40,8 +43,13 @@ const ExpenseItem = ({ expenseItem }) => {
                     />
                 </div>
             </div>
-            <div className="flex-none text-lg font-semibold text-emerald-500 p-1">
-                Rs. 100
+            <div
+                className={
+                    "flex-none text-lg font-semibold p-1 " +
+                    getExpenseTextColor(expenseItem.isExpense)
+                }
+            >
+                Rs. {expenseItem.amount}
             </div>
         </div>
     );
