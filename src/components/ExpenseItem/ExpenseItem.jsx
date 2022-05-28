@@ -43,13 +43,22 @@ const ExpenseItem = ({ expenseItem }) => {
                     />
                 </div>
             </div>
-            <div
-                className={
-                    "flex-none text-lg font-semibold p-1 " +
-                    getExpenseTextColor(expenseItem.isExpense)
-                }
-            >
-                Rs. {expenseItem.amount}
+            <div className="flex flex-none flex-col justify-center items-end">
+                <div
+                    className={
+                        "text-mg font-semibold " +
+                        getExpenseTextColor(expenseItem.isExpense)
+                    }
+                >
+                    Rs. {expenseItem.amount}
+                </div>
+                <div className="text-sm font-light">
+                    {new Date(expenseItem.date).toLocaleString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                    })}{" "}
+                </div>
             </div>
         </div>
     );

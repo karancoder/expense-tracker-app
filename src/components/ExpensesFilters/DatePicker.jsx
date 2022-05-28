@@ -7,7 +7,7 @@ import { addDays } from "date-fns";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
-const DateRangeSelector = () => {
+const DateRangeSelector = ({ setSelectedDateRange }) => {
     // date state
     const [range, setRange] = useState([
         {
@@ -16,6 +16,10 @@ const DateRangeSelector = () => {
             key: "selection",
         },
     ]);
+
+    useEffect(() => {
+        setSelectedDateRange(range[0]);
+    }, [range]);
 
     // open close
     const [open, setOpen] = useState(false);
@@ -45,19 +49,19 @@ const DateRangeSelector = () => {
             setOpen(false);
         }
     };
-
     return (
-        <div className="calendarWrap">
+        <div className="flex-none">
+            <span className="text-md font-semibold p-2">Pick Date Range </span>
             <input
-                value={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(
+                value={`${format(range[0].startDate, "dd-MM-yyyy")} to ${format(
                     range[0].endDate,
-                    "MM/dd/yyyy"
+                    "dd-MM-yyyy"
                 )}`}
                 readOnly
-                className="inputBox"
-                onClick={() => setOpen((open) => !open)}
-            />
-
+                className="inputBox p-2 mr-2 border-2 border-slate-400 rounded-sm w-max"
+                size="24"
+                onClick={() => setOpen((prev_open) => !prev_open)}
+            />{" "}
             <div ref={refOne}>
                 {open && (
                     <DateRangePicker
